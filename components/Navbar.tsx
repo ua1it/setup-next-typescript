@@ -7,11 +7,11 @@ export default function NavBar() {
     <nav>
       <img src="/vercel.svg" />
       <div>
-        <Link href="/">
-          <a className={router.pathname === "/" ? "active" : ""}>Home</a>
+        <Link href="/" className={router.pathname === "/" ? "active" : ""}>
+          Home
         </Link>
-        <Link href="/about">
-          <a className={router.pathname === "/about" ? "active" : ""}>About</a>
+        <Link href="/about" className={router.pathname === "/about" ? "active" : ""}>
+          About
         </Link>
       </div>
       <style jsx>{`
