@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+
 
 interface movieProps {
     id: string,
@@ -10,22 +12,22 @@ interface movieProps {
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=${API_KEY}`;
 
-export default function Home() {
+export default function Home({results}: InferGetServerSidePropsType<GetServerSideProps>) {
   console.log("API_KEY", API_KEY)
     const [movies, setMovies] = useState<movieProps[] | null>();
-    useEffect(()=>{
-        fetch(url)
-          .then(response => response.json())
-          .then(result => {
-            console.log(result.results)
-            setMovies(result.results)
-          })
-    }, [])
+    // useEffect(()=>{
+    //     fetch(url)
+    //       .then(response => response.json())
+    //       .then(result => {
+    //         console.log(result.results)
+    //         setMovies(result.results)
+    //       })
+    // }, [])
   return (
     <div className="container">
       <Seo title="Home" />
-      {!movies && <h4>Loading...</h4>}
-      {movies?.map((movie: movieProps) => (
+      {!results && <h4>Loading...</h4>}
+      {results?.map((movie: movieProps) => (
         <div className="movie" key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
@@ -59,13 +61,13 @@ export default function Home() {
   );
 }
 
-// export async function getServerSideProps() {
-//   const { results } = await (
-//     await fetch(`http://localhost:3000/api/movies`)
-//   ).json();
-//   return {
-//     props: {
-//       results,
-//     },
-//   };
-// }
+export async function getServerSideProps({}: GetServerSideProps) {
+  const { results } = await (
+    await fetch(url)
+  ).json();
+  return {
+    props: {
+      results,
+    },
+  };
+}
