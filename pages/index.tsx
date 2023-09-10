@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface movieProps {
     id: string,
@@ -13,24 +14,24 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=${API_KEY}`;
 
 export default function Home({results}: InferGetServerSidePropsType<GetServerSideProps>) {
-  console.log("API_KEY", API_KEY)
-    const [movies, setMovies] = useState<movieProps[] | null>();
-    // useEffect(()=>{
-    //     fetch(url)
-    //       .then(response => response.json())
-    //       .then(result => {
-    //         console.log(result.results)
-    //         setMovies(result.results)
-    //       })
-    // }, [])
+   const router = useRouter();
+   const handleClickMovie = (id: string, title: string) => {
+    router.push({
+      pathname: `/movies/${id}`,
+      query: {
+        title: title,
+      }
+    }, `/movies/${id}` //push의 두번째 파라미터 (as), url에서 보일 것만 표기
+    )
+   }
   return (
     <div className="container">
       <Seo title="Home" />
       {!results && <h4>Loading...</h4>}
       {results?.map((movie: movieProps) => (
-        <div className="movie" key={movie.id}>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h4>{movie.original_title}</h4>
+        <div onClick={()=>handleClickMovie(movie.id, movie.original_title)} className="movie" key={movie.id}>
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+            <h4>{movie.original_title}</h4>
         </div>
       ))}
       <style jsx>{`
