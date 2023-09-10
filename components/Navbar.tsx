@@ -3,12 +3,16 @@ import { useRouter } from "next/router";
 
 export default function NavBar() {
   const router = useRouter();
+  const handleClick = () => {
+    router.push("/");
+  }
+
   return (
     <nav>
-      <img src="/vercel.svg" />
+      <img src="/vercel.svg" onClick={handleClick} />
       <div>
-        <Link href="/" className={router.pathname === "/" ? "active" : ""}>
-          Home
+        <Link href="/movies" className={router.pathname === "/movies" ? "active" : ""}>
+          Movie
         </Link>
         <Link href="/about" className={router.pathname === "/about" ? "active" : ""}>
           About
