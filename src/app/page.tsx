@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -28,15 +29,19 @@ export default function Home() {
         </div>
       </div>
 
+      <Link href="/a-page">홈으로 돌아가기</Link>
+
       <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        <a href="/home">
+          <Image
+            className={styles.logo}
+            src="/next.svg"
+            alt="Next.js Logo"
+            width={180}
+            height={37}
+            priority
+          />
+        </a>
       </div>
 
       <div className={styles.grid}>
