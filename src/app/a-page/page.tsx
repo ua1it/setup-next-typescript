@@ -3,9 +3,11 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background-color: black;
-  color: white;
+  &.customWrapper {
+    background-color: black;
+    color: white;
+  }
 `;
 export default function Page() {
-  return <Wrapper>Hello, Next.js!</Wrapper>;
+  return <Wrapper className="customWrapper">Hello, Next.js!</Wrapper>;
 }
