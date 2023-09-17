@@ -1,3 +1,6 @@
+// layout.tsx
+import React from 'react';
+import './globals.css';
 import StyledJsxRegistry from './registry';
 
 export default function RootLayout({
