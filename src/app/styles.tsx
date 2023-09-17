@@ -9,8 +9,24 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 30%;
+  /* 전체 적용 스타일 */
   height: 100%;
   background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* 핸드폰 */
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  /* 태블릿 */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 데스크탑 */
+  @media screen and (min-width: 1025px) {
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 `;
