@@ -1,6 +1,4 @@
-'use client';
-
-import { Container, Wrapper } from '@/app/styles';
+import { Container, Wrapper } from '../styles/styles';
 
 export default function Home() {
   return (

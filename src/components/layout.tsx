@@ -1,6 +1,5 @@
 // layout.tsx
 import React from 'react';
-import './globals.css';
 import StyledJsxRegistry from './registry';
 
 export default function RootLayout({
@@ -8,11 +7,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="ko">
-      <body>
-        <StyledJsxRegistry>{children}</StyledJsxRegistry>
-      </body>
-    </html>
-  );
+  return <StyledJsxRegistry>{children}</StyledJsxRegistry>;
 }
+
+{/* <html lang="ko">
+<body>
+  <StyledJsxRegistry>{children}</StyledJsxRegistry>
+</body>
+</html> */}
