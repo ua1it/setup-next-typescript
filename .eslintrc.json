@@ -23,6 +23,7 @@
     }
   },
   "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react/jsx-filename-extension": [
       "warn",
       {
