@@ -21,6 +21,7 @@ export default function Home({results}: InferGetServerSidePropsType<GetServerSid
   const router = useRouter();
    const handleClickMovie = (id: string, title: string) => {
     setIdd(id);
+    localStorage.setItem("movieKey", id);
     router.push({
       pathname: `/movies/${id}`,
       query: {
