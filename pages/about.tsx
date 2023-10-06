@@ -12,12 +12,17 @@ export default function About() {
     script.onload = () => {
       // 네이버 지도 API 스크립트가 로드된 후 실행될 코드
       const map = new window.naver.maps.Map('map', {
-        center: new window.naver.maps.LatLng(35.17982543369992, 129.07499499992576),
-        zoom: 17,
+        center: new window.naver.maps.LatLng(37.450795, 127.128816),
+        zoom: 16,
       });
 
-      const marker = new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(35.17982543369992, 129.07499499992576),
+      const marker1 = new window.naver.maps.Marker({
+        position: new window.naver.maps.LatLng(37.450795, 127.128816),
+        map: map,
+      });
+
+      const marker2 = new window.naver.maps.Marker({
+        position: new window.naver.maps.LatLng(37.448, 127.128),
         map: map,
       });
 
