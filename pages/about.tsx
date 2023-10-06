@@ -6,10 +6,9 @@ export default function About() {
   useEffect(() => {
     // 페이지가 로드될 때 한 번만 실행될 코드
     const script = document.createElement('script');
-    script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?clientId=${CID}`; // 여기에 자신의 네이버 지도 API 클라이언트 아이디를 넣어야 합니다.
+    script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${CID}`; // 여기에 자신의 네이버 지도 API 클라이언트 아이디를 넣어야 합니다.
     script.async = true;
     document.head.appendChild(script);
-
     script.onload = () => {
       // 네이버 지도 API 스크립트가 로드된 후 실행될 코드
       const map = new window.naver.maps.Map('map', {
@@ -20,6 +19,11 @@ export default function About() {
       const marker = new window.naver.maps.Marker({
         position: new window.naver.maps.LatLng(35.17982543369992, 129.07499499992576),
         map: map,
+      });
+
+      window.naver.maps.Event.addListener(map, 'click', (e: any) => {
+        // 클릭한 좌표 정보를 alert로 표시
+        alert(`Clicked at: ${e.coord}`);
       });
     };
 
