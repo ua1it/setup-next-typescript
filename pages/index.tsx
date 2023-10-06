@@ -16,3 +16,9 @@ export default function Home() {
     </div>
   );
 }
+
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
