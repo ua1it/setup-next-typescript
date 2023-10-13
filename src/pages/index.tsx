@@ -1,9 +1,14 @@
-import { Container, Wrapper } from '../styles/styles';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export default function Home() {
-  return (
-    <Container>
-      <Wrapper>this is Wrapper</Wrapper>
-    </Container>
-  );
+function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/mainpage');
+  }, []);
+
+  return null; // 혹은 <LoadingComponent />
 }
+
+export default Home;
