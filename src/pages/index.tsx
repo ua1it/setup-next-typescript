@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import SplashScreen from '../components/splash';
 
 function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('/mainpage');
+    router.replace('/main');
   }, []);
 
-  return null; // 혹은 <LoadingComponent />
+  return <SplashScreen />;
 }
 
 export default Home;
