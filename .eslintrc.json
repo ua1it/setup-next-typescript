@@ -5,12 +5,14 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
+    "plugin:jest-dom/recommended",
     "next/core-web-vitals"
   ],
   "plugins": [
     "@typescript-eslint",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "jest-dom"
   ],
   "env": {
     "browser": true,
