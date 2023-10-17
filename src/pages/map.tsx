@@ -7,8 +7,8 @@ import {
   useMap,
 } from 'react-naver-maps';
 
-import { makeMarkerClustering } from './marker-cluster';
 import { useState } from 'react';
+import { makeMarkerClustering } from './marker-cluster';
 
 function MarkerCluster() {
   // https://github.com/navermaps/marker-tools.js/blob/master/marker-clustering/src/MarkerClustering.js
