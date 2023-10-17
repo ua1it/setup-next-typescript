@@ -1,7 +1,7 @@
 import {
   Container as MapDiv,
   NaverMap,
-  Marker,
+  // Marker,
   useNavermaps,
   Overlay,
   useMap,
@@ -86,7 +86,8 @@ function MarkerCluster() {
       icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
       indexGenerator: [10, 100, 200, 500, 1000],
       styling: function (clusterMarker: any, count: any) {
-        clusterMarker.getElement().querySelector('div:first-child').innerText = count;
+        clusterMarker.getElement().querySelector('div:first-child').innerText =
+          count;
       },
     });
 
