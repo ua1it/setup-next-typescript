@@ -6,6 +6,7 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import Script from 'next/script';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -33,9 +34,16 @@ class MyDocument extends Document {
   }
 
   render() {
+    const CID = 'a52com5x1w'; // 네이버맵 API의 Client id
+
     return (
       <Html>
-        <Head />
+        <Head>
+          <Script
+            strategy="beforeInteractive"
+            src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${CID}`}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
